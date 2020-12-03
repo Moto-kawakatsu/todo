@@ -6,7 +6,11 @@
           content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDo</title>
-
+    <style type ="text/css">
+      .done {
+          text-decoration: line-through;
+      }
+    </style>
 </head>
 <body>
     <ul>
@@ -14,5 +18,15 @@
         <li>Todo 2 <button>done</button></li>
         <li>Todo 3 <button>done</button></li>
     </ul>
+    <script>
+        const buttonList = document.querySelectorAll('button');
+        [...buttonList].forEach((button) => {
+            button.addEventListener('click',() => {
+            const li = button.closest('li');
+            li.classList.add('done');
+            });
+        });
+
+    </script>
 </body>
 </html>
