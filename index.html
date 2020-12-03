@@ -6,27 +6,32 @@
           content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDo</title>
-    <style type ="text/css">
-      .done {
-          text-decoration: line-through;
-      }
+    <link rel="stylesheet" href="style.css">
+
     </style>
 </head>
 <body>
-    <ul>
-        <li>Todo 1 <button>done</button></li>
-        <li>Todo 2 <button>done</button></li>
-        <li>Todo 3 <button>done</button></li>
-    </ul>
-    <script>
-        const buttonList = document.querySelectorAll('button');
-        [...buttonList].forEach((button) => {
-            button.addEventListener('click',() => {
-            const li = button.closest('li');
-            li.classList.add('done');
-            });
-        });
 
-    </script>
+    <input id="new-todo" type="text"><button id="add-button">add</button>
+    <script>
+        const addTodoButton = document.querySelector('#add-button');
+        addTodoButton.addEventListener('click', () => {
+          const input = document.querySelector('#new-todo');
+          const text = input.value;
+          input.value = '';
+      
+          const newLi = document.createElement('li');
+          newLi.innerText = text;
+          const newButton = document.createElement('button');
+          newButton.innerText = 'done';
+          newLi.appendChild(newButton);
+          newButton.addEventListener('click', () => {
+            const li = newButton.closest('li');
+            li.classList.add('done');
+          });
+          document.querySelector('ul').appendChild(newLi);
+        });
+      </script>
+      <ul></ul>
 </body>
 </html>
